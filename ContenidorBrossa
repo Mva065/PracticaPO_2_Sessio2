@@ -1,0 +1,85 @@
+package Exercici2;
+import java.util.GregorianCalendar;
+
+public class ContenidorBrossa {
+
+	private String codi; //Atributs
+	Ubicacio ubicacio;
+	private int anycol, anyret, color;
+	
+	public String getcodi(){ // Mètode d'accés als atributs
+		return codi;
+	}
+	
+	public int getcolor (){ // Mètode d'accés als atributs
+		return color;
+	}
+	
+	public int getanyret(){ // Mètode d'accés als atributs
+		return anyret;
+	}
+	
+	public int getanycol(){ // Mètode d'accés als atributs
+		return anycol;
+	}
+	
+	
+	public ContenidorBrossa(String codi, int color, Ubicacio ubicacio, int anycol, int anyret){ //Constructor
+		this.codi = codi;
+		this.color = color;
+		this.anycol = anycol;
+		this.anyret = anyret;
+		this.ubicacio = ubicacio;
+	}
+	
+	public ContenidorBrossa(Ubicacio ubicacio){ //2n Construcor
+		this(GenerarParametresContenidor.generarCodi(), GenerarParametresContenidor.generarColor(), ubicacio,  GenerarParametresContenidor.generarAny(), 0);
+	}
+	
+	
+	public String getTipusBrossa(){ //Metodes
+		if (this.color == 1){
+			return "orgànic";
+		} else if (this.color == 3){
+			return "rebuig";
+		}else if (this.color == 2){
+			return "paper";
+		}else if (this.color == 4){
+			return "plàstic";
+		}else if (this.color == 5){
+			return "vidre";
+		}else {
+			return "ERROR";
+		}
+	}
+	
+	public String getEstat(){
+		GregorianCalendar avui = new GregorianCalendar();
+		int anyActual = avui.get(1);
+		if (anyActual - this.anycol >= 5){
+			return "Vell";
+		} else if (anyActual - this.anycol <= 3){
+			return "Nou";
+		} else {
+			return "Seminou";
+		}
+	}
+		
+	public Ubicacio getUbicacio(){ 
+		return ubicacio;
+	}
+	
+	public void canviarUbicacio(ContenidorBrossa c, Ubicacio novaUbicacio){
+	}
+	
+	public void retirarViaPublica(int i){
+		if (ubicacio.treureContenidor(this)){
+			ubicacio = null;
+			this.anyret = i;
+		}
+		
+	}
+	
+	
+	
+	}
