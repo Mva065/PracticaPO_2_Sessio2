@@ -1,0 +1,41 @@
+package Exercici2;
+public class GenerarParametresContenidor {
+	
+	public static String generarCodi(){
+		char [] id = new char [7];
+		id [0] = generarDigit();  
+		id [1] = generarDigit();  
+		id [2] = '-';
+		id [3] = generarLletra();  
+		id [4] = generarLletra();  
+		id [5] = generarLletra();  
+		id [6] = generarLletra();  
+		
+		String codi =  "";
+		 for (int i = 0; i < id.length; i++){
+			 codi = codi + id[i];
+		 } return codi;
+	}
+	
+	public static int generarColor(){
+		int color = 1 + (int)(Math.random() * 5);
+		return color;
+	}
+	
+	public static int generarAny(){
+		int any = (int)(Math.random() * (2013 - 1980) + 1980);
+		return any;
+	}
+	
+	private static char generarDigit(){
+		char digit = (char)(Math.random() * (57 - 48) + 48);
+		return digit;
+	}
+	
+	private static char generarLletra(){
+		char c = (char)(Math.random() * (90 - 65) + 65);
+		return c;
+	}
+	
+	
+}
