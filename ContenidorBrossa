@@ -7,6 +7,13 @@ public class ContenidorBrossa {
 	Ubicacio ubicacio;
 	private int anycol, anyret, color;
 	
+	public static int numMarrons = 0;
+	public static int numGrisos = 0;
+	public static int numBlaus = 0;
+	public static int numGrocs = 0;
+	public static int numVerds = 0;
+	
+	
 	public String getcodi(){ // Mètode d'accés als atributs
 		return codi;
 	}
@@ -38,18 +45,14 @@ public class ContenidorBrossa {
 	
 	
 	public String getTipusBrossa(){ //Metodes
-		if (this.color == 1){
-			return "orgànic";
-		} else if (this.color == 3){
-			return "rebuig";
-		}else if (this.color == 2){
-			return "paper";
-		}else if (this.color == 4){
-			return "plàstic";
-		}else if (this.color == 5){
-			return "vidre";
-		}else {
-			return "ERROR";
+		
+		switch (this.color){
+		case 1: numMarrons++; 	return "orgànic";
+		case 3: numGrisos++; 	return "rebuig";
+		case 2: numBlaus++; 	return "paper";
+		case 4: numGrocs++; 	return "plàstic";
+		case 5: numVerds++; 	return "vidre";
+		default: 				return "ERROR";
 		}
 	}
 	
