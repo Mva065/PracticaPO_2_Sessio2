@@ -6,11 +6,10 @@ public class Ubicacio {
 	private int numVia;
 	private boolean cruilla;
 	
-	//private String contenidors;
-	private int numContenidors;
+	private int numContenidors = 0;
 	private static final int  MAX_CONTENIDORS = 5;
-	private ContenidorBrossa [] contenidors = new ContenidorBrossa [12]; 
-	private static int numUbicacions;
+	private ContenidorBrossa [] contenidors = new ContenidorBrossa [20]; 
+	public static int numUbicacions = 0;
 	
 	public String getnomVia(){ // Mètode d'accés als atributs
 		return nomVia;
@@ -20,7 +19,6 @@ public class Ubicacio {
 		return numVia;
 	}
 	
-	
 	public int getnumContenidors(){ // Mètode d'accés als atributs
 		return numContenidors;
 	}
@@ -29,12 +27,10 @@ public class Ubicacio {
 		return numUbicacions;
 	}
 	
-
-	public Ubicacio (String nomVia, int numVia, boolean cruilla, int numContenidors){ //Constructor
+	public Ubicacio (String nomVia, int numVia, boolean cruilla){ //Constructor
 		this.nomVia = nomVia;
 		this.numVia = numVia;
 		this.cruilla = cruilla;
-		this.numContenidors = numContenidors;
 	}
 	
 	public String getContenidors(int i){
@@ -42,48 +38,25 @@ public class Ubicacio {
 		return tCodi;
 	}
 	
-	public String ColorBrossa(int i){
-		String color = this.contenidors[i].getTipusBrossa();
-		return color;	
-	}
-	
 	public boolean afegirContenidor(ContenidorBrossa c){
-		
-		/*boolean trobat = true;
+		boolean trobat = true;
 		for (int i = 0; i < numContenidors; i++){
-			if(c.getcolor() == contenidors[i].getcolor());
+			if(c.getcolor() == contenidors[i].getcolor())
 				trobat = false;
-			}
-		if (trobat && numContenidors < MAX_CONTENIDORS){
-			contenidors[numContenidors] = c;
+		} if (trobat && numContenidors < MAX_CONTENIDORS){
+			this.contenidors[numContenidors] = c;
 			numContenidors++;
-		}
-			return trobat;*/
-		
-		int cont = 0;
-		for (int i = 0; i < this.contenidors.length && cont == 0; i++){
-			if (this.contenidors[i] == null){
-				this.contenidors[i] = c;
-				cont++;
-			}}
-			return true;
-			
+		} return trobat;	
 	}
 	
 	public String estatCont (int i){
-		if (this.contenidors[i].getEstat() == "Vell"){
-			return "Vell";
-		} else if (this.contenidors[i].getEstat() == "Nou"){
-			return "Nou";
-		} else if (this.contenidors[i].getEstat() == "Seminou"){
-			return "Seminou";
-		} else {
-			return "ERROR";
-		}
-	}
+		switch (this.contenidors[i].getEstat()){
+		case "Vell": 	return "Vell";
+		case "Nou": 	return "Nou";
+		case "Seminou": return "Seminou";
+		default: 		return "ERROR"; }}
 	
 	public boolean treureContenidor(ContenidorBrossa c){
-		
 		boolean trobat = false; int i = 0;
 		for (int k = 0; k < numContenidors && !trobat; k++){
 			if (c == contenidors[k]){
@@ -96,6 +69,4 @@ public class Ubicacio {
 				} else {
 					contenidors[k] = contenidors[k+1];
 				}} numContenidors--;
-		}return trobat;
-
-}}
+		}return trobat; }}
